@@ -12,7 +12,11 @@
 CHIP PC {
     IN in[16],inc, load, reset;
     OUT out[16];
-    
+
     PARTS:
-    //// Replace this comment with your code.
+    Register(in=w3, load=true, out=out, out=o);
+    Inc16(in=o, out=oinc);
+    Mux16(a=o, b=oinc, sel=inc, out=w1);
+    Mux16(a=w1, b=in, sel=load, out=w2);
+    Mux16(a=w2, b=false, sel=reset, out=w3);
 }
