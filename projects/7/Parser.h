@@ -19,7 +19,7 @@ enum class commandType {
 
 class Parser {
    public:
-    explicit Parser(const std::string &filename);
+    explicit Parser(const std::string &fileName);
     bool hasMoreLines();
     void advance();
     commandType getCommandType() const;

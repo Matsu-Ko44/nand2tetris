@@ -8,8 +8,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::string filename = argv[1];
-    VMTranslator vmTranslator(filename);
+    std::string fileName = argv[1];
+    VMTranslator vmTranslator(fileName);
 
     vmTranslator.translate();
 

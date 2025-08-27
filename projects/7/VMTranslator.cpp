@@ -8,8 +8,8 @@
 
 namespace fs = std::filesystem;
 
-VMTranslator::VMTranslator(const std::string& filename) {
-    inputFilename = filename;
+VMTranslator::VMTranslator(const std::string& fileName) {
+    inputFilename = fileName;
     outputFilename = inputFilename;
     size_t dotPos = outputFilename.rfind(".vm");
     if (dotPos == std::string::npos) {

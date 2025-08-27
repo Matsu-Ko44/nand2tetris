@@ -8,7 +8,7 @@ enum class InstructionType { A_INSTRUCTION, C_INSTRUCTION, L_INSTRUCTION };
 
 class Parser {
    public:
-    explicit Parser(const std::string &filename);
+    explicit Parser(const std::string &fileName);
     bool hasMoreLines();
     void advance();
     InstructionType instructionType() const;

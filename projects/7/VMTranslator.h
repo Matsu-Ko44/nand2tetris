@@ -5,7 +5,7 @@
 
 class VMTranslator {
    public:
-    explicit VMTranslator(const std::string &filename);
+    explicit VMTranslator(const std::string &fileName);
     void translate();
 
    private:

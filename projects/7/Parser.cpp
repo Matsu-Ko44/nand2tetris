@@ -4,9 +4,9 @@
 #include <sstream>
 #include <stdexcept>
 
-Parser::Parser(const std::string &filename) : inputFile(filename) {
+Parser::Parser(const std::string &fileName) : inputFile(fileName) {
     if (!inputFile.is_open()) {
-        throw std::runtime_error("File cannot open: " + filename);
+        throw std::runtime_error("File cannot open: " + fileName);
     }
 }
 

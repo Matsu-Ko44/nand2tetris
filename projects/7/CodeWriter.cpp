@@ -4,11 +4,11 @@
 
 namespace fs = std::filesystem;
 
-CodeWriter::CodeWriter(const std::string &filename) : outputFile(filename) {
+CodeWriter::CodeWriter(const std::string &fileName) : outputFile(fileName) {
     if (!outputFile.is_open()) {
-        throw std::runtime_error("File cannot open: " + filename);
+        throw std::runtime_error("File cannot open: " + fileName);
     }
-    fs::path p(filename);
+    fs::path p(fileName);
     vmFilename = p.stem().string();
 }
 
