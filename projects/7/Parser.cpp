@@ -84,11 +84,11 @@ std::string Parser::arg1() const {
     throw std::logic_error("arg1() called on command with no argument 1.");
 }
 
-std::string Parser::arg2() const {
+int Parser::arg2() const {
     if (currentCommandType == commandType::C_PUSH ||
         currentCommandType == commandType::C_POP) {
         if (currentCommand.size() >= 3) {
-            return currentCommand[2];
+            return stoi(currentCommand[2]);
         }
     }
     throw std::logic_error("arg2() called on command with no argument 2.");

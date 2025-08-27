@@ -75,8 +75,7 @@ void CodeWriter::writeArithmetic(const std::string &command) {
 }
 
 void CodeWriter::writePushPop(const commandType command,
-                              const std::string &segment,
-                              const std::string &index) {
+                              const std::string &segment, const int index) {
     std::string mnemonic;
     if (segment == "local") {
         mnemonic = "LCL";
@@ -102,11 +101,11 @@ void CodeWriter::writePushPop(const commandType command,
         outputFile << "// push " << segment << " " << index << std::endl;
 
         if (mnemonic == "POINTER") {
-            if (index == "0") {
+            if (index == 0) {
                 outputFile << "@3" << std::endl;
                 outputFile << "D=M" << std::endl;
             }
-            if (index == "1") {
+            if (index == 1) {
                 outputFile << "@4" << std::endl;
                 outputFile << "D=M" << std::endl;
             }
@@ -139,11 +138,11 @@ void CodeWriter::writePushPop(const commandType command,
         outputFile << "// pop " << segment << " " << index << std::endl;
 
         if (mnemonic == "POINTER") {
-            if (index == "0") {
+            if (index == 0) {
                 outputFile << "@3" << std::endl;
                 outputFile << "D=A" << std::endl;
             }
-            if (index == "1") {
+            if (index == 1) {
                 outputFile << "@4" << std::endl;
                 outputFile << "D=A" << std::endl;
             }

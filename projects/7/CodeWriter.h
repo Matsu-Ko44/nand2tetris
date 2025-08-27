@@ -12,7 +12,7 @@ class CodeWriter {
     explicit CodeWriter(const std::string &fileName);
     void writeArithmetic(const std::string &command);
     void writePushPop(const commandType command, const std::string &segment,
-                      const std::string &index);
+                      const int index);
     void writeEndLoop();
     void close();
 

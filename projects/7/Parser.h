@@ -24,7 +24,7 @@ class Parser {
     void advance();
     commandType getCommandType() const;
     std::string arg1() const;
-    std::string arg2() const;
+    int arg2() const;
 
    private:
     std::ifstream inputFile;
