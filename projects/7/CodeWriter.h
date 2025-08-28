@@ -17,7 +17,7 @@ class CodeWriter {
     void close();
 
    private:
-    std::string vmFilename;
+    std::string vmFileName;
     std::ofstream outputFile;
     int jumpCounter = 0;
     int staticCounter = 0;

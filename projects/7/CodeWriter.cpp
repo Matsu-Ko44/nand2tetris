@@ -9,7 +9,7 @@ CodeWriter::CodeWriter(const std::string &fileName) : outputFile(fileName) {
         throw std::runtime_error("File cannot open: " + fileName);
     }
     fs::path p(fileName);
-    vmFilename = p.stem().string();
+    vmFileName = p.stem().string();
 }
 
 void CodeWriter::writeArithmetic(const std::string &command) {
@@ -119,7 +119,7 @@ void CodeWriter::writePushPop(const commandType command,
             outputFile << "@" << index << std::endl;
             outputFile << "D=A" << std::endl;
         } else if (mnemonic == "STATIC") {
-            outputFile << "@" << vmFilename << "." << index << std::endl;
+            outputFile << "@" << vmFileName << "." << index << std::endl;
             outputFile << "D=M" << std::endl;
         } else {
             outputFile << "@" << mnemonic << std::endl;
@@ -152,7 +152,7 @@ void CodeWriter::writePushPop(const commandType command,
             outputFile << "@" << index << std::endl;
             outputFile << "D=D+A" << std::endl;
         } else if (mnemonic == "STATIC") {
-            outputFile << "@" << vmFilename << "." << index << std::endl;
+            outputFile << "@" << vmFileName << "." << index << std::endl;
             outputFile << "D=A" << std::endl;
         } else {
             outputFile << "@" << mnemonic << std::endl;
