@@ -11,7 +11,7 @@ class CodeWriter {
    public:
     explicit CodeWriter(const std::string &fileName);
     void writeArithmetic(const std::string &command);
-    void writePushPop(const commandType command, const std::string &segment,
+    void writePushPop(const CommandType command, const std::string &segment,
                       const int index);
     void writeEndLoop();
     void close();

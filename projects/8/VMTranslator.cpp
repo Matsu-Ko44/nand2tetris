@@ -32,24 +32,24 @@ void VMTranslator::translate() {
 
         while (parser.hasMoreLines()) {
             parser.advance();
-            commandType currentCommandType = parser.getCommandType();
-            if (currentCommandType == commandType::C_ARITHMETIC) {
+            CommandType currentCommandType = parser.getCommandType();
+            if (currentCommandType == CommandType::C_ARITHMETIC) {
                 codeWriter.writeArithmetic(parser.arg1());
-            } else if (currentCommandType == commandType::C_PUSH ||
-                       currentCommandType == commandType::C_POP) {
+            } else if (currentCommandType == CommandType::C_PUSH ||
+                       currentCommandType == CommandType::C_POP) {
                 codeWriter.writePushPop(currentCommandType, parser.arg1(),
                                         parser.arg2());
-            } else if (currentCommandType == commandType::C_LABEL) {
+            } else if (currentCommandType == CommandType::C_LABEL) {
                 codeWriter.writeLabel(parser.arg1());
-            } else if (currentCommandType == commandType::C_GOTO) {
+            } else if (currentCommandType == CommandType::C_GOTO) {
                 codeWriter.writeGoto(parser.arg1());
-            } else if (currentCommandType == commandType::C_IF) {
+            } else if (currentCommandType == CommandType::C_IF) {
                 codeWriter.writeIf(parser.arg1());
-            } else if (currentCommandType == commandType::C_FUNCTION) {
+            } else if (currentCommandType == CommandType::C_FUNCTION) {
                 codeWriter.writeFunction(parser.arg1(), parser.arg2());
-            } else if (currentCommandType == commandType::C_CALL) {
+            } else if (currentCommandType == CommandType::C_CALL) {
                 codeWriter.writeCall(parser.arg1(), parser.arg2());
-            } else if (currentCommandType == commandType::C_RETURN) {
+            } else if (currentCommandType == CommandType::C_RETURN) {
                 codeWriter.writeReturn();
             }
         }

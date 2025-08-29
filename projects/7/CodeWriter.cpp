@@ -74,7 +74,7 @@ void CodeWriter::writeArithmetic(const std::string &command) {
     }
 }
 
-void CodeWriter::writePushPop(const commandType command,
+void CodeWriter::writePushPop(const CommandType command,
                               const std::string &segment, const int index) {
     std::string mnemonic;
     if (segment == "local") {
@@ -97,7 +97,7 @@ void CodeWriter::writePushPop(const commandType command,
         throw std::runtime_error("Unknown segment: " + segment);
     }
 
-    if (command == commandType::C_PUSH) {
+    if (command == CommandType::C_PUSH) {
         outputFile << "// push " << segment << " " << index << std::endl;
 
         if (mnemonic == "POINTER") {
@@ -134,7 +134,7 @@ void CodeWriter::writePushPop(const commandType command,
         outputFile << "@SP" << std::endl;
         outputFile << "M=M+1" << std::endl;
     }
-    if (command == commandType::C_POP) {
+    if (command == CommandType::C_POP) {
         outputFile << "// pop " << segment << " " << index << std::endl;
 
         if (mnemonic == "POINTER") {

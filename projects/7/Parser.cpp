@@ -56,11 +56,11 @@ void Parser::advance() {
                 currentCommand[0] == "gt" || currentCommand[0] == "lt" ||
                 currentCommand[0] == "and" || currentCommand[0] == "or" ||
                 currentCommand[0] == "not") {
-                currentCommandType = commandType::C_ARITHMETIC;
+                currentCommandType = CommandType::C_ARITHMETIC;
             } else if (currentCommand[0] == "push") {
-                currentCommandType = commandType::C_PUSH;
+                currentCommandType = CommandType::C_PUSH;
             } else if (currentCommand[0] == "pop") {
-                currentCommandType = commandType::C_POP;
+                currentCommandType = CommandType::C_POP;
             } else {
                 throw std::runtime_error("Unknown command: " + cmd);
             }
@@ -69,14 +69,14 @@ void Parser::advance() {
     }
 }
 
-commandType Parser::getCommandType() const { return currentCommandType; }
+CommandType Parser::getCommandType() const { return currentCommandType; }
 
 std::string Parser::arg1() const {
-    if (currentCommandType == commandType::C_ARITHMETIC) {
+    if (currentCommandType == CommandType::C_ARITHMETIC) {
         return currentCommand[0];
     }
-    if (currentCommandType == commandType::C_PUSH ||
-        currentCommandType == commandType::C_POP) {
+    if (currentCommandType == CommandType::C_PUSH ||
+        currentCommandType == CommandType::C_POP) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
@@ -85,8 +85,8 @@ std::string Parser::arg1() const {
 }
 
 int Parser::arg2() const {
-    if (currentCommandType == commandType::C_PUSH ||
-        currentCommandType == commandType::C_POP) {
+    if (currentCommandType == CommandType::C_PUSH ||
+        currentCommandType == CommandType::C_POP) {
         if (currentCommand.size() >= 3) {
             return stoi(currentCommand[2]);
         }

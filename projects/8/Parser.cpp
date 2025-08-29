@@ -56,23 +56,23 @@ void Parser::advance() {
                 currentCommand[0] == "gt" || currentCommand[0] == "lt" ||
                 currentCommand[0] == "and" || currentCommand[0] == "or" ||
                 currentCommand[0] == "not") {
-                currentCommandType = commandType::C_ARITHMETIC;
+                currentCommandType = CommandType::C_ARITHMETIC;
             } else if (currentCommand[0] == "push") {
-                currentCommandType = commandType::C_PUSH;
+                currentCommandType = CommandType::C_PUSH;
             } else if (currentCommand[0] == "pop") {
-                currentCommandType = commandType::C_POP;
+                currentCommandType = CommandType::C_POP;
             } else if (currentCommand[0] == "label") {
-                currentCommandType = commandType::C_LABEL;
+                currentCommandType = CommandType::C_LABEL;
             } else if (currentCommand[0] == "goto") {
-                currentCommandType = commandType::C_GOTO;
+                currentCommandType = CommandType::C_GOTO;
             } else if (currentCommand[0] == "if-goto") {
-                currentCommandType = commandType::C_IF;
+                currentCommandType = CommandType::C_IF;
             } else if (currentCommand[0] == "function") {
-                currentCommandType = commandType::C_FUNCTION;
+                currentCommandType = CommandType::C_FUNCTION;
             } else if (currentCommand[0] == "call") {
-                currentCommandType = commandType::C_CALL;
+                currentCommandType = CommandType::C_CALL;
             } else if (currentCommand[0] == "return") {
-                currentCommandType = commandType::C_RETURN;
+                currentCommandType = CommandType::C_RETURN;
             } else {
                 throw std::runtime_error("Unknown command: " + cmd);
             }
@@ -81,33 +81,33 @@ void Parser::advance() {
     }
 }
 
-commandType Parser::getCommandType() const { return currentCommandType; }
+CommandType Parser::getCommandType() const { return currentCommandType; }
 
 std::string Parser::arg1() const {
-    if (currentCommandType == commandType::C_ARITHMETIC) {
+    if (currentCommandType == CommandType::C_ARITHMETIC) {
         return currentCommand[0];
-    } else if (currentCommandType == commandType::C_PUSH ||
-               currentCommandType == commandType::C_POP) {
+    } else if (currentCommandType == CommandType::C_PUSH ||
+               currentCommandType == CommandType::C_POP) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
-    } else if (currentCommandType == commandType::C_LABEL) {
+    } else if (currentCommandType == CommandType::C_LABEL) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
-    } else if (currentCommandType == commandType::C_GOTO) {
+    } else if (currentCommandType == CommandType::C_GOTO) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
-    } else if (currentCommandType == commandType::C_IF) {
+    } else if (currentCommandType == CommandType::C_IF) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
-    } else if (currentCommandType == commandType::C_FUNCTION) {
+    } else if (currentCommandType == CommandType::C_FUNCTION) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
-    } else if (currentCommandType == commandType::C_CALL) {
+    } else if (currentCommandType == CommandType::C_CALL) {
         if (currentCommand.size() >= 2) {
             return currentCommand[1];
         }
@@ -116,10 +116,10 @@ std::string Parser::arg1() const {
 }
 
 int Parser::arg2() const {
-    if (currentCommandType == commandType::C_PUSH ||
-        currentCommandType == commandType::C_POP ||
-        currentCommandType == commandType::C_FUNCTION ||
-        currentCommandType == commandType::C_CALL) {
+    if (currentCommandType == CommandType::C_PUSH ||
+        currentCommandType == CommandType::C_POP ||
+        currentCommandType == CommandType::C_FUNCTION ||
+        currentCommandType == CommandType::C_CALL) {
         if (currentCommand.size() >= 3) {
             return stoi(currentCommand[2]);
         }

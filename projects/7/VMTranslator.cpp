@@ -26,12 +26,12 @@ void VMTranslator::translate() {
     try {
         while (parser.hasMoreLines()) {
             parser.advance();
-            commandType currentCommandType = parser.getCommandType();
-            if (currentCommandType == commandType::C_ARITHMETIC) {
+            CommandType currentCommandType = parser.getCommandType();
+            if (currentCommandType == CommandType::C_ARITHMETIC) {
                 codeWriter.writeArithmetic(parser.arg1());
             }
-            if (currentCommandType == commandType::C_PUSH ||
-                currentCommandType == commandType::C_POP) {
+            if (currentCommandType == CommandType::C_PUSH ||
+                currentCommandType == CommandType::C_POP) {
                 codeWriter.writePushPop(currentCommandType, parser.arg1(),
                                         parser.arg2());
             }

@@ -12,7 +12,7 @@ class CodeWriter {
     explicit CodeWriter(const std::string &fileName);
     void setFileName(const std::string &fileName);
     void writeArithmetic(const std::string &command);
-    void writePushPop(const commandType command, const std::string &segment,
+    void writePushPop(const CommandType command, const std::string &segment,
                       const int index);
     void writeLabel(const std::string &label);
     void writeGoto(const std::string &label);

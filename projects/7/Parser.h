@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-enum class commandType {
+enum class CommandType {
     C_ARITHMETIC,
     C_PUSH,
     C_POP,
@@ -22,14 +22,14 @@ class Parser {
     explicit Parser(const std::string &fileName);
     bool hasMoreLines();
     void advance();
-    commandType getCommandType() const;
+    CommandType getCommandType() const;
     std::string arg1() const;
     int arg2() const;
 
    private:
     std::ifstream inputFile;
     std::vector<std::string> currentCommand;
-    commandType currentCommandType;
+    CommandType currentCommandType;
     std::string cleanLine(const std::string &line);
 };
 
